@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Book Flight</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<h1>Book Flight Ticket</h1>
+
+<form th:action="@{/saveBooking}" th:object="${booking}" method="post">
+
+Passenger Name
+<br>
+<input type="text" th:field="*{passengerName}" required>
+
+<br><br>
+
+Number of Tickets
+<br>
+<input type="number" th:field="*{tickets}" min="1" max="10" required>
+
+<br><br>
+
+Select Flight
+<br>
+
+<select th:field="*{flight}">
+
+<option th:each="f : ${flights}"
+        th:value="${f.id}"
+        th:text="${f.flightNo + ' (' + f.source + ' - ' + f.destination + ')'}">
+</option>
+
+</select>
+
+<br><br>
+
+<button type="submit">Book Ticket</button>
+
+</form>
+
+</body>
+</html>

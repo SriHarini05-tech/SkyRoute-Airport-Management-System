@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Flight Ticket</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<h1>Flight Ticket</h1>
+
+<div class="ticketBox">
+
+<p><b>Passenger:</b>
+<span th:text="${booking.passengerName}"></span>
+</p>
+
+<p><b>Tickets Booked:</b>
+<span th:text="${booking.tickets}"></span>
+</p>
+
+<p><b>Flight:</b>
+<span th:text="${booking.flight.flightNo}"></span>
+</p>
+
+<p><b>Source:</b>
+<span th:text="${booking.flight.source}"></span>
+</p>
+
+<p><b>Destination:</b>
+<span th:text="${booking.flight.destination}"></span>
+</p>
+
+</div>
+
+<a href="/userDashboard">Back to Dashboard</a>
+
+</body>
+</html>

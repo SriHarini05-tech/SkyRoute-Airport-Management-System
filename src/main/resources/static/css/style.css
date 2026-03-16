@@ -1,0 +1,42 @@
+body{
+font-family:Arial;
+background-image:url("/images/airport.png");
+background-size:cover;
+text-align:center;
+color:white;
+}
+
+h1{
+font-size:50px;
+margin-top:40px;
+}
+
+.menu{
+margin-top:50px;
+}
+
+.menu a{
+display:block;
+font-size:28px;
+padding:15px;
+margin:10px auto;
+width:300px;
+background:#0077cc;
+color:white;
+text-decoration:none;
+border-radius:10px;
+}
+
+.menu a:hover{
+background:#004999;
+}
+
+.ticketBox{
+background:white;
+color:black;
+padding:30px;
+width:400px;
+margin:auto;
+border-radius:10px;
+font-size:22px;
+}

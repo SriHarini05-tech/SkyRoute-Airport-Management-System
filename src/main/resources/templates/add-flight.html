@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Flight</title>
+</head>
+<body>
+<h2>Add Flight</h2>
+
+<form th:action="@{/save}" th:object="${flight}" method="post">
+    Flight No: <input type="text" th:field="*{flightNo}" /><br><br>
+    Source: <input type="text" th:field="*{source}" /><br><br>
+    Destination: <input type="text" th:field="*{destination}" /><br><br>
+    Departure Time: <input type="text" th:field="*{departureTime}" /><br><br>
+    <button type="submit">Save</button>
+</form>
+
+<a href="/">Back</a>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+
+<h2>Airport Dashboard</h2>
+
+<!-- ADMIN -->
+<div sec:authorize="hasRole('ADMIN')">
+<a href="/add">Add Flight</a><br>
+</div>
+
+<!-- EVERYONE -->
+<div sec:authorize="hasAnyRole('ADMIN','STAFF','USER')">
+<a href="/view">View Flights</a><br>
+</div>
+
+<!-- STAFF + USER -->
+<div sec:authorize="hasAnyRole('STAFF','USER')">
+<a href="/book">Book Flight</a><br>
+</div>
+
+<!-- ADMIN + STAFF -->
+<div sec:authorize="hasAnyRole('ADMIN','STAFF')">
+<a href="/viewBookings">View All Bookings</a><br>
+</div>
+
+<!-- USER -->
+<div sec:authorize="hasRole('USER')">
+<a href="/viewBookings">My Bookings</a><br>
+</div>
+
+<a href="/logout">Logout</a>
+
+</body>
+</html>

@@ -2,45 +2,106 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Book Flight</title>
-<link rel="stylesheet" href="/css/style.css">
+    <title>Book Flight</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 30px;
+            font-size: 32px;
+        }
+
+        form {
+            background: white;
+            color: black;
+            width: 400px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid gray;
+        }
+
+        button {
+            background: #1e3c72;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #16325c;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            margin-top: 10px;
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
 
-<h1>Book Flight Ticket</h1>
+<h1>Book Flight Ticket ✈️</h1>
+
+<!-- Error Message -->
+<p class="error" th:if="${error}" th:text="${error}"></p>
 
 <form th:action="@{/saveBooking}" th:object="${booking}" method="post">
 
-Passenger Name
-<br>
-<input type="text" th:field="*{passengerName}" required>
+    <!-- Passenger Name -->
+    <label><b>Passenger Name</b></label><br>
+    <input type="text" th:field="*{passengerName}" placeholder="Enter name" required>
 
-<br><br>
+    <!-- Number of Tickets -->
+    <label><b>Number of Tickets</b></label><br>
+    <input type="number" th:field="*{tickets}" min="1" placeholder="Enter tickets" required>
 
-Number of Tickets
-<br>
-<input type="number" th:field="*{tickets}" min="1" max="10" required>
+    <!-- Flight Dropdown -->
+    <label><b>Select Flight</b></label><br>
 
-<br><br>
+    <select th:field="*{flightId}" required>
 
-Select Flight
-<br>
+        <option value="">-- Select Flight --</option>
 
-<select th:field="*{flight}">
-
-<option th:each="f : ${flights}"
+        <option th:each="f : ${flights}"
         th:value="${f.id}"
-        th:text="${f.flightNo + ' (' + f.source + ' - ' + f.destination + ')'}">
+        th:text="${f.flightNo + ' | ' + f.source + ' → ' + f.destination + ' | Date: ' + f.travelDate + ' | Seats Left: ' + f.remainingSeats + ' | ₹' + f.ticketPrice}">
 </option>
 
-</select>
+    </select>
 
-<br><br>
-
-<button type="submit">Book Ticket</button>
+    <!-- Submit -->
+    <button type="submit">Book Ticket</button>
 
 </form>
+
+<!-- Back Button -->
+<a href="/dashboard" class="back-btn">⬅ Back to Dashboard</a>
 
 </body>
 </html>

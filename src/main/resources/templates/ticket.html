@@ -31,10 +31,15 @@
 <p><b>Destination:</b>
 <span th:text="${booking.flight.destination}"></span>
 </p>
-
+<p>Date: <span th:text="${booking.travelDate}"></span></p>
 </div>
 
 <a href="/userDashboard">Back to Dashboard</a>
+<a sec:authorize="hasRole('ADMIN')" href="/adminDashboard">Back</a>
+
+<a sec:authorize="hasRole('STAFF')" href="/staffDashboard">Back</a>
+
+<a sec:authorize="hasRole('USER')" href="/userDashboard">Back</a>
 
 </body>
 </html>

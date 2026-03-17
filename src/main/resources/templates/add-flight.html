@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-    <title>Add Flight</title>
+<title>Add Flight</title>
+<link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-<h2>Add Flight</h2>
 
-<form th:action="@{/save}" th:object="${flight}" method="post">
-    Flight No: <input type="text" th:field="*{flightNo}" /><br><br>
-    Source: <input type="text" th:field="*{source}" /><br><br>
-    Destination: <input type="text" th:field="*{destination}" /><br><br>
-    Departure Time: <input type="text" th:field="*{departureTime}" /><br><br>
-    <button type="submit">Save</button>
+<h1>Add Flight</h1>
+
+<form th:action="@{/saveFlight}" th:object="${flight}" method="post">
+
+    Flight No
+    <input type="text" th:field="*{flightNo}" required>
+
+    Source
+    <input type="text" th:field="*{source}" required>
+
+    Destination
+    <input type="text" th:field="*{destination}" required>
+    Travel Date
+<input type="date" th:field="*{travelDate}" required>
+
+    Departure Time
+    <input type="text" th:field="*{departureTime}" required>
+
+    Total Seats
+    <input type="number" th:field="*{totalSeats}" required>
+
+    Ticket Price
+    <input type="number" th:field="*{ticketPrice}" required>
+
+    <button type="submit">Add Flight</button>
+
 </form>
-
-<a href="/">Back</a>
 
 </body>
 </html>

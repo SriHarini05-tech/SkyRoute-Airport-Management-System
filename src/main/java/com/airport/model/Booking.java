@@ -15,44 +15,46 @@ public class Booking {
 
     private int tickets;
 
+    private String seatNumbers;
+
+    private double totalPrice;
+
+    private String travelDate;
+
+    // ✅ Used only for form (NOT DB)
+    @Transient
+    private Long flightId;
+
+    // ✅ Actual DB relation
     @ManyToOne
+    @JoinColumn(name = "flight_id")
     private Flight flight;
 
     public Booking(){}
 
-    public Long getId(){
-        return id;
-    }
+    public Long getId(){ return id; }
 
-    public String getPassengerName(){
-        return passengerName;
-    }
+    public String getPassengerName(){ return passengerName; }
+    public void setPassengerName(String passengerName){ this.passengerName = passengerName; }
 
-    public void setPassengerName(String passengerName){
-        this.passengerName = passengerName;
-    }
+    public String getUsername(){ return username; }
+    public void setUsername(String username){ this.username = username; }
 
-    public String getUsername(){
-        return username;
-    }
+    public int getTickets(){ return tickets; }
+    public void setTickets(int tickets){ this.tickets = tickets; }
 
-    public void setUsername(String username){
-        this.username = username;
-    }
+    public String getSeatNumbers(){ return seatNumbers; }
+    public void setSeatNumbers(String seatNumbers){ this.seatNumbers = seatNumbers; }
 
-    public int getTickets(){
-        return tickets;
-    }
+    public double getTotalPrice(){ return totalPrice; }
+    public void setTotalPrice(double totalPrice){ this.totalPrice = totalPrice; }
 
-    public void setTickets(int tickets){
-        this.tickets = tickets;
-    }
+    public String getTravelDate(){ return travelDate; }
+    public void setTravelDate(String travelDate){ this.travelDate = travelDate; }
 
-    public Flight getFlight(){
-        return flight;
-    }
+    public Long getFlightId(){ return flightId; }
+    public void setFlightId(Long flightId){ this.flightId = flightId; }
 
-    public void setFlight(Flight flight){
-        this.flight = flight;
-    }
+    public Flight getFlight(){ return flight; }
+    public void setFlight(Flight flight){ this.flight = flight; }
 }

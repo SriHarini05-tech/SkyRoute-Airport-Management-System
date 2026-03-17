@@ -2,7 +2,7 @@ package com.airport.controller;
 
 import com.airport.model.Flight;
 import com.airport.repository.FlightRepository;
-
+import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,14 +41,16 @@ public class FlightController {
         return "view-flights";
     }
 
-    // delete flight
     @GetMapping("/delete/{id}")
-    public String deleteFlight(@PathVariable Long id){
+public String deleteFlight(@PathVariable Long id,
+                           Authentication auth){
 
+    if(auth.getAuthorities().toString().contains("ADMIN")){
         flightRepository.deleteById(id);
-
-        return "redirect:/view";
     }
+
+    return "redirect:/view";
+}
 
     // search flight
     @GetMapping("/searchFlight")

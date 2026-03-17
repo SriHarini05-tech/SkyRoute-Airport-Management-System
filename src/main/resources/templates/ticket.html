@@ -34,7 +34,7 @@
 <p>Date: <span th:text="${booking.travelDate}"></span></p>
 </div>
 
-<a href="/userDashboard">Back to Dashboard</a>
+<a href="/dashboard">Back to Dashboard</a>
 <a sec:authorize="hasRole('ADMIN')" href="/adminDashboard">Back</a>
 
 <a sec:authorize="hasRole('STAFF')" href="/staffDashboard">Back</a>

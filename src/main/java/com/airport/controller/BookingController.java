@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.List;
 import org.springframework.security.core.Authentication;
 
 @Controller
@@ -24,6 +24,19 @@ public String bookFlight(Model model){
 
     model.addAttribute("booking", new Booking());
     model.addAttribute("flights", flightRepository.findAll());
+
+    return "book-flight";
+}
+@GetMapping("/searchFlights")
+public String searchFlights(@RequestParam String source,
+                           @RequestParam String destination,
+                           Model model){
+
+    List<Flight> flights =
+            flightRepository.findBySourceAndDestination(source, destination);
+
+    model.addAttribute("booking", new Booking());
+    model.addAttribute("flights", flights);
 
     return "book-flight";
 }

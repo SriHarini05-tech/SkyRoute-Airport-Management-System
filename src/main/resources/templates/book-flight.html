@@ -70,7 +70,23 @@
 
 <!-- Error Message -->
 <p class="error" th:if="${error}" th:text="${error}"></p>
+<form action="/searchFlights" method="get">
 
+    <label><b>Source</b></label><br>
+    <input type="text" name="source" placeholder="Enter source" required>
+
+    <br>
+
+    <label><b>Destination</b></label><br>
+    <input type="text" name="destination" placeholder="Enter destination" required>
+
+    <br><br>
+
+    <button type="submit">Search Flights</button>
+
+</form>
+
+<hr>
 <form th:action="@{/saveBooking}" th:object="${booking}" method="post">
 
     <!-- Passenger Name -->

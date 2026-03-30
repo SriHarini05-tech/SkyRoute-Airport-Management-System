@@ -1,31 +1,21 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven3'
-    }
-
     stages {
 
-        stage('Clone Code') {
-            steps {
-                git 'https://github.com/your-username/airport-management.git'
-            }
-        }
-
-        stage('Build Project') {
+        stage('Build') {
             steps {
                 bat 'mvn clean install'
             }
         }
 
-        stage('Run Tests') {
+        stage('Test') {
             steps {
                 bat 'mvn test'
             }
         }
 
-        stage('Package JAR') {
+        stage('Package') {
             steps {
                 bat 'mvn package'
             }

@@ -20,5 +20,10 @@ pipeline {
                 bat 'mvn package'
             }
         }
+        stage('Check Trigger') {
+    steps {
+        bat 'echo AUTO TRIGGER WORKING'
+    }
+}
     }
 }

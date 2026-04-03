@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Check Trigger') {
     steps {
-        bat 'echo AUTO TRIGGER WORKING'
+        bat 'echo TRIGGER WORKING'
     }
 }
     }
